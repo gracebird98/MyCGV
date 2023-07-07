@@ -1,5 +1,6 @@
 package com.mycgv_jsp.controller;
 
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -112,8 +113,7 @@ public class AdminController {
 	@RequestMapping(value="/admin_notice_update_proc.do", method=RequestMethod.POST)
 	public ModelAndView admin_notice_update_proc(NoticeVo noticeVo, HttpServletRequest request) throws Exception {
 		
-		ArrayList<String> oldFileName = noticeVo.getNsfiles();
-		
+		String[] oldFileName = {noticeVo.getNsfile1(), noticeVo.getNsfile2() };	
 		ModelAndView model = new ModelAndView();
 		int result = noticeService.update(fileService.multiFileCheck(noticeVo));
 		

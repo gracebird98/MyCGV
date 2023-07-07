@@ -525,20 +525,7 @@ section.admin div {
 section.admin div article {	
 	padding:10px;
 }
-samp#update_file1, samp#update_file2 {
-	position:relative;
-	left:115px; top:-35px;
-	padding:5px;
-	background: white;
-	display:inline-block;
-	text-align:left;
-	width:200px;
-}
 
-
-section.board table#noticeTable tr:nth-child(3) {
-	height:20px;
-}
 
 .filebox input[type="file"] {
   position: absolute;
@@ -552,7 +539,6 @@ section.board table#noticeTable tr:nth-child(3) {
 }
 
 .filebox label {
-  display: inline-block;
   padding: .5em .75em;
   color: #999;
   font-size: inherit;
@@ -563,6 +549,7 @@ section.board table#noticeTable tr:nth-child(3) {
   border: 1px solid #ebebeb;
   border-bottom-color: #e2e2e2;
   border-radius: .25em;
+  text-align: center;
 }
 
 /* named upload */
@@ -582,7 +569,10 @@ section.board table#noticeTable tr:nth-child(3) {
   appearance: none;
 }
 
-
+section.board form[name='updateForm'] table tr:nth-child(3) input,section.board form[name='updateForm'] table tr:nth-child(4) input, 
+section.board form[name='writeForm'] table tr:nth-child(3) input,section.board form[name='writeForm'] table tr:nth-child(4) input {
+	width:67%;
+}
 
 
 

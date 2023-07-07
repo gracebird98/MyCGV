@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="http://localhost:9000/mycgv_jsp/resources/css/mycgv_jsp.css">
 <script src="http://localhost:9000/mycgv_jsp/resources/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/mycgv_jsp/resources/js/mycgv_jsp_jquery.js"></script>
+<script src="http://localhost:9000/mycgv_jsp/resources/js/mycgv_jsp_jquery_notice_update.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -36,13 +37,21 @@
 					<tr>
 						<th>파일업로드</th>
 						<td>
-							<input type="file" name="files">
+							<div class="filebox">
+								<label for="file1">업로드</label>
+								<input class="upload-name" value="파일 없음" disabled="disabled">
+								<input type="file" name="files" id="file1" class="upload-hidden"> 
+							</div>
 						</td>
 					</tr>	
 					<tr>
 						<th>파일업로드</th>
 						<td>
-							<input type="file" name="files">
+							<div class="filebox">
+								<label for="file2">업로드</label>
+								<input class="upload-name" value="파일 없음" disabled="disabled">
+								<input type="file" name="files" id="file2" class="upload-hidden"> 
+							</div>
 						</td>
 					</tr>									
 					<tr>

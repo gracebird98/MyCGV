@@ -18,20 +18,22 @@ public class FileServiceImpl {
 	/**
 	 * fileDelete 기능 - 파일 삭제 
 	 */
-	public void multiFileDelete(NoticeVo noticeVo, HttpServletRequest request, ArrayList<String> oldFileName) 
+	public void multiFileDelete(NoticeVo noticeVo, HttpServletRequest request, String[] oldFileName) 
 														throws Exception{
 		//파일의 삭제위치
 		String root_path = request.getSession().getServletContext().getRealPath("/");
 		String attach_path = "\\resources\\upload\\";
 		//파일이 존재하면 서버에 저장
+		int count = 0;
 		for(CommonsMultipartFile file : noticeVo.getFiles()) {
 			if(!file.getOriginalFilename().equals("")) { //새로운 파일 선택
-				File deleteFile = new File(root_path + attach_path+ oldFileName);
-				System.out.println(root_path + attach_path+ oldFileName);			
+				File deleteFile = new File(root_path + attach_path+ oldFileName[count]);
+				System.out.println(root_path + attach_path+ oldFileName[count]);			
 				if(deleteFile.exists()) {
 					deleteFile.delete();
 				}
 			}
+			count++;
 		}
 	}	
 	
@@ -60,7 +62,9 @@ public class FileServiceImpl {
 	 * multiFileCheck 멀티파일 체크 기능
 	 */
 	public NoticeVo multiFileCheck(NoticeVo noticeVo) {
-	
+		String[] nfile = {noticeVo.getNfile1(), noticeVo.getNfile2()};
+		String[] nsfile = {noticeVo.getNsfile1(), noticeVo.getNsfile2()};
+		int count = 0;
 		for(CommonsMultipartFile file : noticeVo.getFiles()) {
 			if(!file.getOriginalFilename().equals("")) {
 				//파일이 있음
@@ -70,9 +74,10 @@ public class FileServiceImpl {
 			}
 			else {
 				//파일이 없음
-				noticeVo.getNfiles().add("");
-				noticeVo.getNsfiles().add("");
+				noticeVo.getNfiles().add(nfile[count]);
+				noticeVo.getNsfiles().add(nsfile[count]);
 			}
+			count++;
 		}
 		noticeVo.setNfile1(noticeVo.getNfiles().get(0));
 		noticeVo.setNsfile1(noticeVo.getNsfiles().get(0));

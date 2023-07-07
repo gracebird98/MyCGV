@@ -41,15 +41,17 @@
 							<c:choose>
 								<c:when test="${nvo.nfile1 != null}">
 									<div class="filebox">
+										<label for="file1">업로드</label>
 										<input class="upload-name" value="${nvo.nfile1 }" disabled="disabled">
-										<label for="file1">업로드</label> 
-										<input type="file" name="files" id="file1" class="upload-hidden"> 
+										<input type="file" name="files" id="file1" class="upload-hidden">
+										<input type="hidden" name="nfile1" value="${nvo.nfile1} ">
+										<input type="hidden" name="nsfile1" value="${nvo.nsfile1} ">
 									</div>
 								</c:when>
 								<c:otherwise>
 									<div class="filebox">
-										<input class="upload-name" value="파일없음" disabled="disabled">
-										<label for="file1">업로드</label> 
+										<label for="file1">업로드</label>
+										<input class="upload-name" value="파일 없음" disabled="disabled">
 										<input type="file" name="files" id="file1" class="upload-hidden"> 
 									</div>
 								</c:otherwise>							
@@ -59,15 +61,22 @@
 					<tr>
 						<th>파일업로드</th>
 						<td>
-							<input type="hidden" name="nfile" value="${nvo.nfile2} ">
-							<input type="hidden" name="nsfile" value="${nvo.nsfile2} ">
-							<input type="file" name="files" id="file2">
 							<c:choose>
 								<c:when test="${nvo.nfile2 != null}">
-									<samp id="update_file2">${nvo.nfile2 }</samp>
+									<div class="filebox">
+										<label for="file2">업로드</label>
+										<input class="upload-name" value="${nvo.nfile2 }" disabled="disabled">
+										<input type="file" name="files" id="file2" class="upload-hidden"> 
+										<input type="hidden" name="nfile2" value="${nvo.nfile2} ">
+										<input type="hidden" name="nsfile2" value="${nvo.nsfile2} ">
+									</div>
 								</c:when>
 								<c:otherwise>
-									<samp id="update_file2">파일없음</samp>
+									<div class="filebox">
+										<label for="file2">업로드</label>
+										<input class="upload-name" value="파일 없음" disabled="disabled">
+										<input type="file" name="files" id="file2" class="upload-hidden"> 
+									</div>
 								</c:otherwise>							
 							</c:choose>
 						</td>
