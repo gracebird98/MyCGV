@@ -14,16 +14,37 @@ import com.mycgv_jsp.vo.NoticeVo;
 
 @Service("fileService")
 public class FileServiceImpl {	
+	/**
+	 * multiFileDelete 기능 - 삭제시 파일 삭제 
+	 */
+	public void multiFileDelete(HttpServletRequest request, String[] oldFileName) 
+														throws Exception{
+		//파일의 삭제위치
+		String root_path = request.getSession().getServletContext().getRealPath("/");
+		String attach_path = "\\resources\\upload\\";
+		
+		int count = 0;
+		for(String list : oldFileName) {
+			if(!list.equals("")) {
+				File deleteFile = new File(root_path + attach_path+ oldFileName[count]);
+				System.out.println(root_path + attach_path+ oldFileName[count]);			
+				if(deleteFile.exists()) {
+					deleteFile.delete();
+				}
+			}
+			count++;
+		}
+	}
 	
 	/**
-	 * fileDelete 기능 - 파일 삭제 
+	 * multiFileDelete - 수정시 삭제
 	 */
 	public void multiFileDelete(NoticeVo noticeVo, HttpServletRequest request, String[] oldFileName) 
 														throws Exception{
 		//파일의 삭제위치
 		String root_path = request.getSession().getServletContext().getRealPath("/");
 		String attach_path = "\\resources\\upload\\";
-		//파일이 존재하면 서버에 저장
+
 		int count = 0;
 		for(CommonsMultipartFile file : noticeVo.getFiles()) {
 			if(!file.getOriginalFilename().equals("")) { //새로운 파일 선택

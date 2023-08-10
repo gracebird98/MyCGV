@@ -133,10 +133,10 @@ public class AdminController {
 	 *  공지사항 삭제하기 페이지
 	 */
 	@RequestMapping(value="/admin_notice_delete.do", method=RequestMethod.GET)
-	public ModelAndView admin_notice_delete(String nid) {
+	public ModelAndView admin_notice_delete(String nid ) {
 		ModelAndView model = new ModelAndView();
-		
-		model.addObject("nid", nid);
+		NoticeVo noticeVo = noticeService.getContent(nid);
+		model.addObject("nvo", noticeVo);
 		model.setViewName("/admin/notice/admin_notice_delete");
 		/*
 		 * if(boardVo != null) { // 조회수 업데이트 DB boardDao.updateHits(bid); }
@@ -150,11 +150,13 @@ public class AdminController {
 		 * 공지사항 삭제 proc
 		 */
 		@RequestMapping(value="/admin_notice_delete_proc.do", method=RequestMethod.POST)
-		public ModelAndView admin_notice_delete_proc(String nid) {
+		public ModelAndView admin_notice_delete_proc(NoticeVo noticeVo, HttpServletRequest request) throws Exception {
 			ModelAndView model = new ModelAndView();
-			int result = noticeService.delete(nid);
+			int result = noticeService.delete(noticeVo.getNid());
+			String[] oldFileName = {noticeVo.getNsfile1(),noticeVo.getNsfile2()};
 			
 			if(result ==1) {
+				fileService.multiFileDelete(request, oldFileName);
 				model.setViewName("redirect:/admin_notice_list.do");
 			}
 			/*

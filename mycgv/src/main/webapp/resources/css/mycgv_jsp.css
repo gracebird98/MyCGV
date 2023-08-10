@@ -526,6 +526,9 @@ section.admin div article {
 	padding:10px;
 }
 
+/********************************************
+업로드 파일
+*********************************************/
 
 .filebox input[type="file"] {
   position: absolute;
@@ -538,7 +541,7 @@ section.admin div article {
   border: 0;
 }
 
-.filebox label {
+.filebox label.fblabel {
   padding: .5em .75em;
   color: #999;
   font-size: inherit;

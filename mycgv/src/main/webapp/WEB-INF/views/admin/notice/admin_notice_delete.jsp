@@ -18,10 +18,12 @@
 		<section class="board">
 			<h1 class="title">관리자 - 공지사항</h1>
 			<form name="deleteForm" action="admin_notice_delete_proc.do" method="post">
-				<input type="hidden" name="nid" value="${nid }">
+				<input type="hidden" name="nid" value="${nvo.nid }">
+				<input type="hidden" name="nsfile1" value="${nvo.nsfile1 }">
+				<input type="hidden" name="nsfile2" value="${nvo.nsfile2 }">
 				<table border=1>
 					<tr>
-						<td><img src="http://localhost:9000/mycgv_jsp/resources/images/trash.jpg"></td>
+						<td><img src="http://localhost:9000/mycgv_jsp/resources/images/free-icon-trash-bin-4812459.png"></td>
 					</tr>
 					<tr>					
 						<td>정말로 삭제 하시겠습니까?</td>
